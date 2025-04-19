@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack-a-Mole Deluxe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="whack.css">
+</head>
+<body>
+  <h1>Whack-a-Mole!</h1>
+  <div class="difficulty-container">
+    <label for="difficulty" class="difficulty-main-label">Difficulty</label>
+    <div class="slider-wrapper">
+      <div id="slider-value-label">Medium</div>
+      <input type="range" id="difficulty" min="1" max="3" value="2" class="slider">
+    </div>
+    <div class="slider-labels">
+      <span>Easy</span>
+      <span>Medium</span>
+      <span>Hard</span>
+    </div>
+  </div>
+  <div id="controls">
+    <button id="start-btn">Start Game</button>
+  </div>
+  <div id="stats">
+    <span>Score: <span id="score">0</span></span>
+    <span>Time: <span id="time">30</span>s</span>
+  </div>
+  <div id="game-board"></div>
+  <div id="message"></div>
+
+  <div id="button-row">
+    <a id="back-home" href="index.html">Back to Home</a>
+  </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="popup-close" class="popup-close">&times;</span>
+      <h2>Game Over!</h2>
+      <p id="popup-score"></p>
+      <button id="popup-restart">Play Again</button>
+    </div>
+  </div>
+
+  <script src="whack.js"></script>
+</body>
+</html>

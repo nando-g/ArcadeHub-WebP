@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="memory.css">
+</head>
+<body>
+    <h1>Memory Game</h1>
+    <div class="controls">
+        <select id="difficulty">
+            <option value="8">Easy (4 pairs)</option>
+            <option value="12" selected>Medium (6 pairs)</option>
+            <option value="16">Hard (8 pairs)</option>
+        </select>
+        <button id="start">New Game</button>
+    </div>
+    <div class="stats">
+        <span>Moves: <span id="moves">0</span></span>
+        <span>Time: <span id="timer">0</span>s</span>
+    </div>
+    <div id="game-board"></div>
+    <div id="button-row">
+        <a id="back-home" href="index.html">Back to Home</a>
+    </div>
+    <div id="win-popup" class="popup">
+        <div class="popup-content">
+            <h2>You Win! 🎉</h2>
+            <p>Moves: <span id="win-moves">0</span></p>
+            <p>Time: <span id="win-time">0</span>s</p>
+            <button onclick="startGame()">Play Again</button>
+        </div>
+    </div>
+    <script src="memory.js"></script>
+</body>
+</html>

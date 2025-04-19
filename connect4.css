@@ -1,0 +1,161 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: radial-gradient(ellipse at 50% 20%, #212b70 0%, #0f1c2e 85%);
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2.2em;
+  color: #ffe14b;
+  letter-spacing: 2.5px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 18px #ffe14b88, 0 2px 0 #000, 0 4px 12px #1976d2;
+}
+
+p.info {
+  text-align: center;
+  width: 420px;
+  max-width: 95vw;
+  margin: 0 auto 20px auto;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #ffe14b;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #1976d2aa;
+}
+
+#game-base {
+  width: 480px;
+  max-width: 98vw;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+#game-table {
+  width: 434px;
+  height: 374px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #232d4d 60%, #1976d2 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #1976d255;
+  position: relative;
+  cursor: pointer;
+  border: 8px solid #ffe14b;
+  overflow: hidden;
+}
+
+#board-holes {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+
+.board-hole {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #0f1c2e;
+  margin: auto;
+  box-shadow: 0 0 2px #aaa, inset 0 2px 8px #2c3e50;
+}
+
+.disc {
+  position: absolute;
+  z-index: 4;
+  width: 46px;
+  height: 46px;
+  border-radius: 46px;
+  transition: top .4s cubic-bezier(.5,1.7,.7,1.01);
+  left: 0;
+}
+
+.disc.red {
+  background: #d96666;
+  box-shadow: 0 2px 8px #b22222, 0 0 12px #ffe14b66;
+  border: 2px solid #ffe14b;
+}
+
+.disc.yellow {
+  background: #ffe14b;
+  box-shadow: 0 2px 8px #bdb76b, 0 0 12px #1976d288;
+  border: 2px solid #1976d2;
+}
+
+.disc.win {
+  animation: winFlash 1s infinite alternate;
+  box-shadow: 0 0 16px 8px #fff700, 0 0 8px 4px #fff700;
+  border: 2px solid #fff700;
+}
+
+@keyframes winFlash {
+  0% { box-shadow: 0 0 16px 8px #fff700, 0 0 8px 4px #fff700; }
+  100% { box-shadow: 0 0 32px 16px #fff700, 0 0 16px 8px #fff700; }
+}
+
+.col-hover {
+  background: rgba(25, 118, 210, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px #81d4fa;
+}
+
+#message {
+  text-align: center;
+  font-size: 1.2em;
+  min-height: 30px;
+  margin: 18px auto 10px auto;
+  color: #ffe14b;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #1976d2aa;
+}
+
+#button-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+#restart, #back-home {
+  padding: 12px 32px;
+  font-size: 1.12em;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 12px #1976d255;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 1px;
+  margin: 0 8px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#restart:hover, #back-home:hover {
+  background: #ffe14b;
+  color: #232d4d;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.2em; }
+  #game-base { width: 99vw; padding-top: 10px; }
+  #game-table { width: 98vw; height: 60vw; min-width: 220px; min-height: 180px; }
+  .board-hole, .disc { width: 8vw; height: 8vw; min-width: 30px; min-height: 30px; }
+  #button-row { flex-direction: column; gap: 8px; }
+  #restart, #back-home { width: 90vw; max-width: 300px; }
+}

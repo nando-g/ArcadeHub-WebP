@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplayer Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(ellipse at 50% 20%, #212b70 0%, #0f1c2e 85%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 2.2em;
+      color: #ffe14b;
+      letter-spacing: 2.5px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      text-shadow: 0 0 18px #ffe14b88, 0 2px 0 #000, 0 4px 12px #1976d2;
+    }
+    #join-link-area {
+      margin: 20px auto 18px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    #join-link-area span {
+      color: #ffe14b;
+      font-size: 1.08em;
+      margin-bottom: 2px;
+      letter-spacing: 1px;
+    }
+    #join-link {
+      color: #1976d2;
+      background: #fff;
+      padding: 8px 18px;
+      border-radius: 9px;
+      font-size: 1.13em;
+      word-break: break-all;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 2px;
+      font-weight: bold;
+      box-shadow: 0 2px 10px #1976d255;
+      transition: background 0.2s, color 0.2s;
+    }
+    #join-link:hover {
+      background: #ffe14b;
+      color: #232d4d;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 26px;
+      margin-top: 14px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      font-size: 2.7em;
+      border: 2.5px solid #ffe14b;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #232d4d 60%, #1976d2 100%);
+      color: #ffe14b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px #1976d255;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      font-family: 'Press Start 2P', monospace, Arial, sans-serif;
+      font-weight: bold;
+      user-select: none;
+    }
+    .cell:hover {
+      background: #ffe14b;
+      color: #1976d2;
+      box-shadow: 0 4px 18px #ffe14b55;
+    }
+    #status {
+      font-size: 1.3em;
+      margin-bottom: 18px;
+      color: #ffe14b;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #1976d2aa;
+      min-height: 32px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    #reset, #back-home {
+      padding: 12px 32px;
+      font-size: 1.12em;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 12px #1976d255;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 1px;
+      margin: 0 8px;
+      margin-bottom: 12px;
+    }
+    #reset:hover, #back-home:hover {
+      background: #ffe14b;
+      color: #232d4d;
+    }
+    #button-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.2em; }
+      .board { gap: 7px; }
+      .cell { width: 20vw; height: 20vw; min-width: 60px; min-height: 60px; font-size: 1.3em; }
+      #join-link { font-size: 0.98em; padding: 6px 6vw; }
+      #button-row { flex-direction: column; gap: 8px; }
+      #reset, #back-home { width: 90vw; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div id="join-link-area">
+    <span>Share this link to join from another device:</span>
+    <a id="join-link" href="#" target="_blank"></a>
+  </div>
+  <p id="status">Waiting for opponent...</p>
+  <div class="board" id="board">
+    <div class="cell" data-index="0"></div>
+    <div class="cell" data-index="1"></div>
+    <div class="cell" data-index="2"></div>
+    <div class="cell" data-index="3"></div>
+    <div class="cell" data-index="4"></div>
+    <div class="cell" data-index="5"></div>
+    <div class="cell" data-index="6"></div>
+    <div class="cell" data-index="7"></div>
+    <div class="cell" data-index="8"></div>
+  </div>
+  <div id="button-row">
+    <button id="reset">Reset Game</button>
+    <a id="back-home" href="index.html">Back to Home</a>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="tictactoe.js"></script>
+</body>
+</html>
